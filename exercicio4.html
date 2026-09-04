@@ -1,23 +1,61 @@
 <!DOCTYPE html>
 <html >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List</title>
 </head>
 <body>
-    <div id="app-tarefas">
-    <h3>Minhas Tarefas</h3>
-    
-    <!-- Campo de digitação e botão de ação -->
-    <input type="text" id="input-nova-tarefa" placeholder="Digite uma tarefa...">
-    <button id="btn-adicionar">Adicionar Tarefa</button>
-    <button id="btn-remover">Remover Tarefa</button>
+<div id="app-tarefas">
+<h3>Minhas Tarefas</h3>
 
-    <!-- Lista onde as tarefas vão aparecer -->
-    <ul id="lista-tarefas">
-        <li>Revisar código da aula passada</li>
-    </ul>
-    </div>
+<!-- Campo de digitação e botão de ação -->
+<input type="text" id="input-nova-tarefa" placeholder="Digite uma tarefa...">
+<button id="btn-adicionar">Adicionar Tarefa</button>
+<button id="btn-remover">Remover Tarefa</button>
+
+<!-- Lista onde as tarefas vão aparecer -->
+<ul id="lista-tarefas">
+<li>Revisar código da aula passada</li>
+</ul>
+</div>
+
+<script>
+  // 1. Seleciona o input de texto, o botão "Adicionar Tarefa" e a lista <ul>
+  const inputNovaTarefa = document.getElementById('input-nova-tarefa');
+  const btnAdicionar = document.getElementById('btn-adicionar');
+  const btnRemover = document.getElementById('btn-remover');
+  const listaTarefas = document.getElementById('lista-tarefas');
+
+  // 2. Adiciona um evento de click ao botão de adicionar
+  btnAdicionar.addEventListener('click', function () {
+    // 3. Captura o .value (texto) que está no input
+    const textoTarefa = inputNovaTarefa.value;
+
+    // 7. Não permite a adição de tarefas com texto vazio
+    if (textoTarefa.trim() === '') {
+      return;
+    }
+
+    // 4. Cria um novo elemento <li>, coloca o texto capturado dentro dele (innerText)
+    // e adiciona na lista da tela (appendChild)
+    const novaTarefa = document.createElement('li');
+    novaTarefa.innerText = textoTarefa;
+    listaTarefas.appendChild(novaTarefa);
+
+    // 5. Após adicionar a tarefa, limpa o input atribuindo uma string vazia ("") ao .value dele
+    inputNovaTarefa.value = '';
+  });
+
+  // Evento de click ao botão de remover
+  btnRemover.addEventListener('click', function () {
+    // 6. Dentro da função de remover, captura o último elemento da lista e remove-o
+    const ultimaTarefa = listaTarefas.lastElementChild;
+    if (ultimaTarefa) {
+      listaTarefas.removeChild(ultimaTarefa);
+    }
+  });
+</script>
+
 </body>
 </html>
