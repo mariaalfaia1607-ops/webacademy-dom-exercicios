@@ -14,11 +14,32 @@
         <li id="tarefa-livro">Ler livro</li>
         <li id="tarefa-roupas">Dobrar as roupas</li>
       </ul>
-
       <h3>Tarefas Concluídas:</h3>
       <ul id="lista-concluidas">
         <li>Fazer compras</li>
       </ul>
     </div>
+
+    <script>
+      const listaPendentes = document.getElementById('lista-pendentes');
+      const listaConcluidas = document.getElementById('lista-concluidas');
+
+      // 1. Apaga a tarefa "Lavar o carro"
+      const tarefaCarro = document.getElementById('tarefa-carro');
+      tarefaCarro.remove();
+
+      // 2. Move a tarefa "Estudar JavaScript" da lista de pendentes para a de concluídas
+      const tarefaJs = document.getElementById('tarefa-js');
+      listaConcluidas.appendChild(tarefaJs);
+
+      // 3. Cria uma nova tarefa <li> dizendo "Fazer exercícios" e adiciona depois de "Ler livro"
+      const tarefaLivro = document.getElementById('tarefa-livro');
+      const novaTarefa = document.createElement('li');
+      novaTarefa.textContent = 'Fazer exercícios';
+      tarefaLivro.after(novaTarefa);
+
+      // 4. Seleciona a tarefa "Ler livro" e adiciona o texto [URGENTE] no começo dela
+      tarefaLivro.textContent = '[URGENTE] ' + tarefaLivro.textContent;
+    </script>
   </body>
 </html>
