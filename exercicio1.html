@@ -13,11 +13,9 @@
         <label>Subtotal dos Produtos (R$):</label>
         <input type="number" id="valor-subtotal" value="150.00">
         <br><br>
-
         <label>Valor do Frete (R$):</label>
         <input type="number" id="valor-frete" value="25.50">
         <br><br>
-
         <!-- Lista para ser contada -->
         <h3>Itens na sua caixa:</h3>
         <ul id="lista-produtos">
@@ -26,5 +24,24 @@
           <li class="produto-comprado">Par de Meias Brancas</li>
         </ul>
       </div>
+
+      <script>
+        // 1. Seleciona a lista de produtos e descobre a quantidade de itens
+        const listaProdutos = document.getElementById('lista-produtos');
+        const quantidadeItens = listaProdutos.getElementsByClassName('produto-comprado').length;
+
+        // 2. Captura os valores preenchidos nos inputs de Subtotal e Frete
+        const subtotal = document.getElementById('valor-subtotal').valueAsNumber;
+        const frete = document.getElementById('valor-frete').valueAsNumber;
+
+        // 3. Soma os dois valores para descobrir o custo total da compra
+        const total = subtotal + frete;
+
+        // 4. Imprime as 4 informações no console do navegador
+        console.log('Quantidade de itens na caixa:', quantidadeItens);
+        console.log('Subtotal:', subtotal);
+        console.log('Frete:', frete);
+        console.log('Total a pagar:', total);
+      </script>
     </body>
 </html>
